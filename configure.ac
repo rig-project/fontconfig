@@ -54,6 +54,7 @@ m4_ifdef([PKG_INSTALLDIR], [PKG_INSTALLDIR], AC_SUBST([pkgconfigdir], ${libdir}/
 AM_MISSING_PROG([GIT], [git])
 AM_MISSING_PROG([GPERF], [gperf])
 AM_PATH_PYTHON
+AM_EMSCRIPTEN
 
 AC_MSG_CHECKING([for RM macro])
 _predefined_rm=`make -p -f /dev/null 2>/dev/null|grep '^RM ='|sed -e 's/^RM = //'`
@@ -284,7 +285,12 @@ fontconfig_save_libs="$LIBS"
 fontconfig_save_cflags="$CFLAGS"
 LIBS="$LIBS $FREETYPE_LIBS"
 CFLAGS="$CFLAGS $FREETYPE_CFLAGS"
+if test "x$emscripten_compiler" = xyes; then
+AC_DEFINE_UNQUOTED(FT_GET_NEXT_CHAR, 1, [Have FT_Get_Next_Char])
+AC_DEFINE_UNQUOTED(FT_SELECT_SIZE, 1, [Have FT_Select_Size])
+else
 AC_CHECK_FUNCS(FT_Get_Next_Char FT_Get_BDF_Property FT_Get_PS_Font_Info FT_Has_PS_Glyph_Names FT_Get_X11_Font_Format FT_Select_Size)
+fi
 AC_CHECK_MEMBER(FT_Bitmap_Size.y_ppem,
 		HAVE_FT_BITMAP_SIZE_Y_PPEM=1,
 		HAVE_FT_BITMAP_SIZE_Y_PPEM=0,
@@ -679,9 +685,12 @@ AC_SUBST(DOCMAN3)
 
 dnl Figure out what cache format suffix to use for this architecture
 AC_C_BIGENDIAN
+
+if test "x$emscripten_compiler" != xyes; then
 AC_CHECK_SIZEOF([void *])
 AC_CHECK_ALIGNOF([double])
 AC_CHECK_ALIGNOF([void *])
+fi
 
 dnl include the header file for workaround of miscalculating size on autoconf
 dnl particularly for fat binaries

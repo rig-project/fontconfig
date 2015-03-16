@@ -38,3 +38,10 @@
 #  define ALIGNOF_DOUBLE 4
 # endif
 #endif
+
+#ifdef __EMSCRIPTEN__
+#define ALIGNOF_VOID_P 4
+#define ALIGNOF_DOUBLE 4
+#define SIZEOF_VOID_P 4
+#define SIZEOF_DOUBLE 8
+#endif
