@@ -1,0 +1,294 @@
+/* config.h.meson.  Generated from configure.ac by autoheader
+   and adapted for use in Meson. */
+
+/* Define if building universal (internal helper macro) */
+#mesondefine AC_APPLE_UNIVERSAL_BUILD
+
+/* The normal alignment of `double', in bytes. */
+#mesondefine ALIGNOF_DOUBLE
+
+/* The normal alignment of `void *', in bytes. */
+#mesondefine ALIGNOF_VOID_P
+
+/* Use libxml2 instead of Expat */
+#mesondefine ENABLE_LIBXML2
+
+/* Define to 1 if translation of program messages to the user's native
+   language is requested. */
+#mesondefine ENABLE_NLS
+
+/* Additional font directories */
+#mesondefine FC_ADD_FONTS
+
+/* Architecture prefix to use for cache file names */
+#mesondefine FC_ARCHITECTURE
+
+/* System font directory */
+#mesondefine FC_DEFAULT_FONTS
+
+#mesondefine FC_CACHEDIR
+#mesondefine FC_TEMPLATEDIR
+#mesondefine FONTCONFIG_PATH
+#mesondefine FC_CONFIGDIR
+
+/* The type of len parameter of the gperf hash/lookup function */
+#mesondefine FC_GPERF_SIZE_T
+
+/* Define to nothing if C supports flexible array members, and to 1 if it does
+   not. That way, with a declaration like `struct s { int n; double
+   d[FLEXIBLE_ARRAY_MEMBER]; };', the struct hack can be used with pre-C99
+   compilers. When computing the size of such an object, don't use 'sizeof
+   (struct s)' as it overestimates the size. Use 'offsetof (struct s, d)'
+   instead. Don't use 'offsetof (struct s, d[0])', as this doesn't work with
+   MSVC and with C++ compilers. */
+#mesondefine FLEXIBLE_ARRAY_MEMBER
+
+/* Define to 1 if you have the <dirent.h> header file, and it defines `DIR'.
+   */
+#mesondefine HAVE_DIRENT_H
+
+/* Define to 1 if you have the <dlfcn.h> header file. */
+#mesondefine HAVE_DLFCN_H
+
+/* Define to 1 if you don't have `vprintf' but do have `_doprnt.' */
+#mesondefine HAVE_DOPRNT
+
+/* Define to 1 if you have the <fcntl.h> header file. */
+#mesondefine HAVE_FCNTL_H
+
+/* Define to 1 if you have the `fstatfs' function. */
+#mesondefine HAVE_FSTATFS
+
+/* Define to 1 if you have the `fstatvfs' function. */
+#mesondefine HAVE_FSTATVFS
+
+/* Define to 1 if you have the `FT_Get_BDF_Property' function. */
+#mesondefine HAVE_FT_GET_BDF_PROPERTY
+
+/* Define to 1 if you have the `FT_Get_PS_Font_Info' function. */
+#mesondefine HAVE_FT_GET_PS_FONT_INFO
+
+/* Define to 1 if you have the `FT_Get_X11_Font_Format' function. */
+#mesondefine HAVE_FT_GET_X11_FONT_FORMAT
+
+/* Define to 1 if you have the `FT_Has_PS_Glyph_Names' function. */
+#mesondefine HAVE_FT_HAS_PS_GLYPH_NAMES
+
+/* Define to 1 if you have the `getexecname' function. */
+#mesondefine HAVE_GETEXECNAME
+
+/* Define to 1 if you have the `getopt' function. */
+#mesondefine HAVE_GETOPT
+
+/* Define to 1 if you have the `getopt_long' function. */
+#mesondefine HAVE_GETOPT_LONG
+
+/* Define to 1 if you have the `getpagesize' function. */
+#mesondefine HAVE_GETPAGESIZE
+
+/* Define to 1 if you have the `getprogname' function. */
+#mesondefine HAVE_GETPROGNAME
+
+/* Have Intel __sync_* atomic primitives */
+#mesondefine HAVE_INTEL_ATOMIC_PRIMITIVES
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#mesondefine HAVE_INTTYPES_H
+
+/* Define to 1 if you have the `link' function. */
+#mesondefine HAVE_LINK
+
+/* Define to 1 if you have the `lrand48' function. */
+#mesondefine HAVE_LRAND48
+
+/* Define to 1 if you have the `lstat' function. */
+#mesondefine HAVE_LSTAT
+
+/* Define to 1 if you have the <memory.h> header file. */
+#mesondefine HAVE_MEMORY_H
+
+/* Define to 1 if you have the `mkdtemp' function. */
+#mesondefine HAVE_MKDTEMP
+
+/* Define to 1 if you have the `mkostemp' function. */
+#mesondefine HAVE_MKOSTEMP
+
+/* Define to 1 if you have the `mkstemp' function. */
+#mesondefine HAVE_MKSTEMP
+
+/* Define to 1 if you have a working `mmap' system call. */
+#mesondefine HAVE_MMAP
+
+/* Define to 1 if you have the <ndir.h> header file, and it defines `DIR'. */
+#mesondefine HAVE_NDIR_H
+
+/* Define to 1 if you have the 'posix_fadvise' function. */
+#mesondefine HAVE_POSIX_FADVISE
+
+/* Have POSIX threads */
+#mesondefine HAVE_PTHREAD
+
+/* Have PTHREAD_PRIO_INHERIT. */
+#mesondefine HAVE_PTHREAD_PRIO_INHERIT
+
+/* Define to 1 if you have the `rand' function. */
+#mesondefine HAVE_RAND
+
+/* Define to 1 if you have the `random' function. */
+#mesondefine HAVE_RANDOM
+
+/* Define to 1 if you have the `random_r' function. */
+#mesondefine HAVE_RANDOM_R
+
+/* Define to 1 if you have the `rand_r' function. */
+#mesondefine HAVE_RAND_R
+
+/* Define to 1 if you have the `readlink' function. */
+#mesondefine HAVE_READLINK
+
+/* Define to 1 if you have the <sched.h> header file. */
+#mesondefine HAVE_SCHED_H
+
+/* Have sched_yield */
+#mesondefine HAVE_SCHED_YIELD
+
+/* Have Solaris __machine_*_barrier and atomic_* operations */
+#mesondefine HAVE_SOLARIS_ATOMIC_OPS
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#mesondefine HAVE_STDINT_H
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#mesondefine HAVE_STDLIB_H
+
+/* Define to 1 if you have the <strings.h> header file. */
+#mesondefine HAVE_STRINGS_H
+
+/* Define to 1 if you have the <string.h> header file. */
+#mesondefine HAVE_STRING_H
+
+/* Define to 1 if `d_type' is a member of `struct dirent'. */
+#mesondefine HAVE_STRUCT_DIRENT_D_TYPE
+
+/* Define to 1 if `f_flags' is a member of `struct statfs'. */
+#mesondefine HAVE_STRUCT_STATFS_F_FLAGS
+
+/* Define to 1 if `f_fstypename' is a member of `struct statfs'. */
+#mesondefine HAVE_STRUCT_STATFS_F_FSTYPENAME
+
+/* Define to 1 if `f_basetype' is a member of `struct statvfs'. */
+#mesondefine HAVE_STRUCT_STATVFS_F_BASETYPE
+
+/* Define to 1 if `f_fstypename' is a member of `struct statvfs'. */
+#mesondefine HAVE_STRUCT_STATVFS_F_FSTYPENAME
+
+/* Define to 1 if `st_mtim' is a member of `struct stat'. */
+#mesondefine HAVE_STRUCT_STAT_ST_MTIM
+
+/* Define to 1 if you have the <sys/mount.h> header file. */
+#mesondefine HAVE_SYS_MOUNT_H
+
+/* Define to 1 if you have the <sys/param.h> header file. */
+#mesondefine HAVE_SYS_PARAM_H
+
+/* Define to 1 if you have the <sys/statfs.h> header file. */
+#mesondefine HAVE_SYS_STATFS_H
+
+/* Define to 1 if you have the <sys/statvfs.h> header file. */
+#mesondefine HAVE_SYS_STATVFS_H
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#mesondefine HAVE_SYS_STAT_H
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#mesondefine HAVE_SYS_TYPES_H
+
+/* Define to 1 if you have the <sys/vfs.h> header file. */
+#mesondefine HAVE_SYS_VFS_H
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#mesondefine HAVE_UNISTD_H
+
+/* Define to 1 if you have the `vprintf' function. */
+#mesondefine HAVE_VPRINTF
+
+/* Can use #warning in C files */
+#mesondefine HAVE_WARNING_CPP_DIRECTIVE
+
+/* Use xmlparse.h instead of expat.h */
+#mesondefine HAVE_XMLPARSE_H
+
+/* Define to 1 if you have the `_mktemp_s' function. */
+#mesondefine HAVE__MKTEMP_S
+
+/* The size of `void *', as computed by sizeof. */
+#mesondefine SIZEOF_VOID_P
+
+/* Define to 1 if you have the ANSI C header files. */
+#mesondefine STDC_HEADERS
+
+/* Use iconv. */
+#mesondefine USE_ICONV
+
+/* Enable extensions on AIX 3, Interix.  */
+#ifndef _ALL_SOURCE
+# define _ALL_SOURCE 1
+#endif
+/* Enable GNU extensions on systems that have them.  */
+#ifndef _GNU_SOURCE
+# define _GNU_SOURCE 1
+#endif
+/* Enable threading extensions on Solaris.  */
+#ifndef _POSIX_PTHREAD_SEMANTICS
+# define _POSIX_PTHREAD_SEMANTICS 1
+#endif
+/* Enable extensions on HP NonStop.  */
+#ifndef _TANDEM_SOURCE
+# define _TANDEM_SOURCE 1
+#endif
+/* Enable general extensions on Solaris.  */
+#ifndef __EXTENSIONS__
+# define __EXTENSIONS__ 1
+#endif
+
+
+/* Version number of package */
+#mesondefine VERSION
+
+/* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
+   significant byte first (like Motorola and SPARC, unlike Intel). */
+#if defined AC_APPLE_UNIVERSAL_BUILD
+# if defined __BIG_ENDIAN__
+#  define WORDS_BIGENDIAN 1
+# endif
+#else
+# ifndef WORDS_BIGENDIAN
+#mesondefine WORDS_BIGENDIAN
+# endif
+#endif
+
+/* Enable large inode numbers on Mac OS X 10.5.  */
+#ifndef _DARWIN_USE_64_BIT_INODE
+# define _DARWIN_USE_64_BIT_INODE 1
+#endif
+
+/* Define to 2 if the system does not provide POSIX.1 features except with
+   this defined. */
+#mesondefine _POSIX_1_SOURCE
+
+/* Define to 1 if you need to in order for `stat' and other things to work. */
+#mesondefine _POSIX_SOURCE
+
+/* Define to empty if `const' does not conform to ANSI C. */
+#mesondefine const
+
+/* Define to `__inline__' or `__inline' if that's what the C compiler
+   calls it, or to nothing if 'inline' is not supported under any name.  */
+#ifndef __cplusplus
+#mesondefine inline
+#endif
+
+/* Define to `int' if <sys/types.h> does not define. */
+#mesondefine pid_t
+
+#include "config-fixups.h"

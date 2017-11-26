@@ -1,0 +1,35 @@
+option('default_fonts',
+       type: 'string',
+       description: 'Use fonts from DIR when config is busted')
+option('add_fonts',
+       type: 'array',
+       description: 'Additional font directories')
+
+option('cache_dir',
+       type: 'string',
+       description: 'Use fonts from DIR when config is busted')
+
+option('template_dir',
+       type: 'string',
+       description: 'Use DIR to store the configuration template files')
+option('base_config_dir',
+       type: 'string',
+       description: 'Use DIR to store the base configuration files')
+option('config_dir',
+       type: 'string',
+       value: 'conf.d',
+       description: 'Use <base_condig_dir>/DIR to store active configuration files')
+option('xml_dir',
+       type: 'string',
+       description: 'Use DIR to store XML schema files')
+
+option('use_iconv',
+       type: 'boolean',
+       value: false,
+       description: 'Use iconv to support non-Unicode SFNT name')
+option('iconv_include',
+       type: 'string',
+       description: 'Use libiconv includes in DIR')
+option('iconv_lib',
+       type: 'string',
+       description: 'Use libiconv library in DIR')

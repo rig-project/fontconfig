@@ -29,8 +29,7 @@
 #include <config.h>
 #endif
 
-#include "fcstdint.h"
-
+#include <stdint.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
