@@ -22,6 +22,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
+#include <libgen.h>
+
 #include "fccharset.c"
 #include "fcstr.c"
 #include "fcserialize.c"
@@ -208,13 +210,18 @@ get_name (char *file)
 {
     char    *name;
     char    *dot;
+    char     tmp[strlen(file) + 1];
+    char    *base;
 
-    dot = strchr (file, '.');
+    memcpy (tmp, file, sizeof(tmp));
+    base = basename (tmp);
+
+    dot = strchr (base, '.');
     if (!dot)
-	dot = file + strlen(file);
-    name = malloc (dot - file + 1);
-    strncpy (name, file, dot - file);
-    name[dot-file] = '\0';
+	dot = base + strlen(base);
+    name = malloc (dot - base + 1);
+    strncpy (name, base, dot - base);
+    name[dot-base] = '\0';
     return name;
 }
 
@@ -324,6 +331,12 @@ main (int argc FC_UNUSED, char **argv)
 	entries[i].id = i;
 	entries[i].file = argv[argi++];
 	i++;
+    }
+    if (i && !dir) {
+        int len = strlen(entries[0].file) + 1;
+        char *tmp = alloca(len);
+        memcpy(tmp, entries[0].file, len);
+        dir = dirname(tmp);
     }
     entries[i].file = 0;
     qsort (entries, i, sizeof (Entry), compare);
