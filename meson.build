@@ -579,11 +579,11 @@ fcobjshash_gperf_pre = custom_target('gen-gperf-pre',
         output : [ 'fcobjshash.gperf.pre' ],
         command : [ cpp, '-E', '-I..', '@INPUT0@', '-o', '@OUTPUT@' ])
 
-makegperf = files('src/makegperf')
+makegperf = files('src/makegperf.py')
 fcobjshash_gperf = custom_target('gen-gperf',
         input : fcobjshash_gperf_pre,
         output : [ 'fcobjshash.gperf' ],
-        command : [ sh, makegperf, '@INPUT@', '@OUTPUT@' ])
+        command : [ makegperf, '@INPUT@', '@OUTPUT@' ])
 
 gperf = find_program('gperf')
 fcobjshash_h = custom_target('gen-objhash',
