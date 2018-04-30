@@ -1,5 +1,6 @@
-#!/bin/sh
-SRCDIR=$1
+#!/bin/bash
+SRCDIR=$1 # Ignored, since porting to build with Meson
+SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 shift
 HEAD=$1
 shift

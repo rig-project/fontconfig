@@ -4,27 +4,6 @@ compiler = meson.get_compiler('c')
 
 inc = include_directories('.', 'src')
 
-tool_c_args = [
-    '-D_ALL_SOURCE=1',
-    '-D_GNU_SOURCE=1',
-    '-DFLEXIBLE_ARRAY_MEMBER=/**/',
-]
-
-fc_case = executable('fc-case', 'fc-case/fc-case.c',
-                     c_args: tool_c_args,
-                     include_directories: inc,
-                     native: true)
-
-fccase_h = custom_target('gen-fccase.h',
-                         input : [ 'fc-case/fccase.tmpl.h' ],
-                         output : [ 'fccase.h' ],
-                         command : [ fc_case, '@INPUT@', '@OUTPUT@', 'fc-case/CaseFolding.txt' ])
-
-fc_lang = executable('fc-lang', [ 'fc-lang/fc-lang.c', fccase_h ],
-                     c_args: tool_c_args,
-                     include_directories: inc,
-                     native: true)
-
 sh = find_program('sh')
 
 thread_dep = dependency('threads', required: false)
@@ -260,38 +239,6 @@ fcdata.set_quoted('CONFIGDIR', config_dir)
 fcdata.set_quoted('FC_CACHEDIR', cache_dir)
 configure_file(input: 'fonts.conf.in', output: 'fonts.conf', configuration: fcdata)
 
-
-
-c_src = [
-    'src/fcatomic.c',
-    'src/fccache.c',
-    'src/fccfg.c',
-    'src/fccharset.c',
-    'src/fccompat.c',
-    'src/fcdbg.c',
-    'src/fcdefault.c',
-    'src/fcdir.c',
-    'src/fcformat.c',
-    'src/fcfreetype.c',
-    'src/fcfs.c',
-    'src/fcptrlist.c',
-    'src/fcinit.c',
-    'src/fclang.c',
-    'src/fclist.c',
-    'src/fcmatch.c',
-    'src/fcmatrix.c',
-    'src/fcmutex.h',
-    'src/fcname.c',
-    'src/fcobjs.c',
-    'src/fcpat.c',
-    'src/fcrange.c',
-    'src/fcserialize.c',
-    'src/fcstat.c',
-    'src/fcstr.c',
-    'src/fcweight.c',
-    'src/fcxml.c',
-    'src/ftglue.c',
-]
 
 ortho = files(
     'fc-lang/aa.orth',
@@ -540,6 +487,23 @@ ortho = files(
     'fc-lang/mni.orth',
 )
 
+fc_case = executable('fc-case', 'fc-case/fc-case.c',
+                     c_args: defines,
+                     include_directories: inc,
+                     native: true)
+
+fccase_h = custom_target('gen-fccase.h',
+                         input : [ 'fc-case/fccase.tmpl.h' ],
+                         output : [ 'fccase.h' ],
+                         command : [ fc_case, '@INPUT@', '@OUTPUT@', 'fc-case/CaseFolding.txt' ])
+
+fc_lang = executable('fc-lang', [ 'fc-lang/fc-lang.c', fccase_h ],
+                     c_args: defines,
+                     include_directories: inc,
+                     native: true)
+
+
+
 fclang_h = custom_target('gen-fclang.h',
         input : [ 'fc-lang/fclang.tmpl.h', ortho ],
         output : [ 'fclang.h' ],
@@ -550,48 +514,6 @@ public_files = files(
         'src/fcdeprecate.h',
         'fontconfig/fcprivate.h')
 
-# XXX: having to hard code path to src directory
-makealias = files('src/makealias')
-fcalias_h = custom_target('gen-fcalias.h',
-        input : [ public_files ] + c_src,
-        output : [ 'fcalias.h', 'fcaliastail.h' ],
-        command : [ sh, makealias, '../src', '@OUTPUT@', '@INPUT0@' ])
-
-# XXX: having to hard code path to src directory
 public_ft_files = files('fontconfig/fcfreetype.h')
-fcftalias_h = custom_target('gen-fcftalias.h',
-        input : [ public_ft_files ] + c_src,
-        output : [ 'fcftalias.h', 'fcftaliastail.h' ],
-        command : [ sh, makealias, '../src', '@OUTPUT@', '@INPUT0@' ])
 
-# XXX: this is a hack for now, and won't work when cross-compiling.
-#
-# Ideally I think Meson would provide some portable way of invoking the c
-# compiler to only preprocess a file within a custom target. (not sure how the
-# -o argument would be abstracted)
-#
-# A second issue here seems to be that there isn't an equivalent of files() for
-# representing directories, so this hard-codes '-I..' into the command
-#
-cpp = find_program('gcc', 'clang', 'clang-cl')
-fcobjshash_gperf_pre = custom_target('gen-gperf-pre',
-        input : [ 'src/fcobjshash.gperf.h', 'src/fcobjs.h' ],
-        output : [ 'fcobjshash.gperf.pre' ],
-        command : [ cpp, '-E', '-I..', '@INPUT0@', '-o', '@OUTPUT@' ])
-
-makegperf = files('src/makegperf.py')
-fcobjshash_gperf = custom_target('gen-gperf',
-        input : fcobjshash_gperf_pre,
-        output : [ 'fcobjshash.gperf' ],
-        command : [ makegperf, '@INPUT@', '@OUTPUT@' ])
-
-gperf = find_program('gperf')
-fcobjshash_h = custom_target('gen-objhash',
-        input : fcobjshash_gperf,
-        output : [ 'fcobjshash.h' ],
-        command : [ gperf, '-m', '100', '@INPUT@', '--output-file', '@OUTPUT@' ])
-
-fc_lib = library('fontconfig', c_src, fclang_h, fcobjshash_h, fcalias_h, fcftalias_h,
-        c_args: defines,
-        include_directories: inc,
-        dependencies: deps)
+subdir('src')
