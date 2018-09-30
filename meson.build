@@ -3,6 +3,7 @@ project('fontconfig', 'c', version: '2.12.6', license: 'MIT')
 compiler = meson.get_compiler('c')
 
 inc = include_directories('.', 'src')
+public_inc = include_directories('fontconfig')
 
 sh = find_program('sh')
 

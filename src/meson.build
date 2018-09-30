@@ -73,3 +73,4 @@ fc_lib = library('fontconfig', src, fclang_h, fcobjshash_h, fcalias_h, fcftalias
         c_args: defines,
         include_directories: inc,
         dependencies: deps)
+fc_dep = declare_dependency(link_with: fc_lib, include_directories: public_inc)
